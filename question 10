@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    // Input variables
+    double principal, annualDeposit, minInterestRate, maxInterestRate;
+    int years;
+
+    // Output variables
+    double balanceWithoutDeposit, balanceWithDeposit;
+
+    // Get input from user
+    cout << "Enter the principal: ";
+    cin >> principal;
+
+    cout << "Enter the minimum interest rate: ";
+    cin >> minInterestRate;
+
+    cout << "Enter the number of years: ";
+    cin >> years;
+
+    cout << "Enter the annual deposit amount: ";
+    cin >> annualDeposit;
+
+    // Calculate the balance without deposit
+    double interestRate = minInterestRate / 100.0;  // Convert percentage to decimal
+    balanceWithoutDeposit = principal * pow(1 + interestRate, years);
+
+    // Calculate the balance with deposit
+    balanceWithDeposit = principal;
+    for (int i = 1; i <= years; i++) {
+        balanceWithDeposit *= (1 + interestRate);
+        balanceWithDeposit += annualDeposit;
+    }
+
+    // Print the results
+    cout << "Balance without deposit after " << years << " years: " << balanceWithoutDeposit << endl;
+    cout << "Balance with deposit after " << years << " years: " << balanceWithDeposit << endl;
+
+    return 0;
+}
